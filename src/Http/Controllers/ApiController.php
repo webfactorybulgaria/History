@@ -2,7 +2,7 @@
 
 namespace TypiCMS\Modules\History\Http\Controllers;
 
-use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Request;
 use TypiCMS\Modules\Core\Http\Controllers\BaseApiController;
 use TypiCMS\Modules\History\Repositories\HistoryInterface as Repository;
 
@@ -22,7 +22,7 @@ class ApiController extends BaseApiController
     {
         $models = $this->repository->latest(25, ['historable', 'user'], true);
 
-        return response()->json($models, 200);
+        return response()->json($models);
     }
 
     /**
@@ -32,28 +32,28 @@ class ApiController extends BaseApiController
      */
     public function store()
     {
-        $model = $this->repository->create(Input::all());
+        $model = $this->repository->create(Request::all());
         $error = $model ? false : true;
 
         return response()->json([
             'error' => $error,
             'model' => $model,
-        ], 200);
+        ]);
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  $model
+     * Clear history.
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update($model)
+    public function destroy()
     {
-        $error = $this->repository->update(Input::all()) ? false : true;
+        $model = $this->repository->empty();
+        $error = $model ? false : true;
 
         return response()->json([
             'error' => $error,
-        ], 200);
+            'model' => $model,
+        ]);
     }
 }
