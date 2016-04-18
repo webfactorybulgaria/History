@@ -16,6 +16,7 @@ class History extends Base
         'historable_id',
         'historable_type',
         'historable_table',
+        'historable_json',
         'title',
         'locale',
         'icon_class',
@@ -80,4 +81,5 @@ class History extends Base
             return $this->historable->editUrl();
         }
     }
+
 }

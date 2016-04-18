@@ -25,4 +25,29 @@ class CacheDecorator extends CacheAbstractDecorator implements HistoryInterface
 
         return $this->repo->clear();
     }
+
+    /**
+     * Get latest models.
+     *
+     * @param int   $number number of items to take
+     * @param array $with   array of related items
+     *
+     * @return Collection
+     */
+    public function versions($model, $number = 25)
+    {
+        $cacheKey = md5(config('app.locale').'versions'.serialize($model).$number);
+
+        if ($this->cache->has($cacheKey)) {
+            return $this->cache->get($cacheKey);
+        }
+
+        // Item not cached, retrieve it
+        $models = $this->repo->versions($model, $number);
+
+        // Store in cache for next request
+        $this->cache->put($cacheKey, $models);
+
+        return $models;
+    }
 }

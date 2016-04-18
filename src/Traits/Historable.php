@@ -26,7 +26,8 @@ trait Historable
             $action = 'updated';
             if (!$model->owner) { // if model has no owner, $model is not a translation
                 $model->writeHistory($action, $model->present()->title);
-            } else { // if model has owner, $model is a translation
+            }
+            else { // if model has owner, $model is a translation
                 // When owner is dirty, history will be written for owner model
                 if ($model->owner->getDirty()) {
                     return;
@@ -35,8 +36,8 @@ trait Historable
                 // getDirty returns only two columns : updated_at and status
                 if (count($model->getDirty()) == 2 && $model->isDirty('status')) {
                     $action = $model->status ? 'set online' : 'set offline';
+                    $model->owner->writeHistory($action, $model->owner->present()->title, $model->locale);
                 }
-                $model->owner->writeHistory($action, $model->owner->present()->title, $model->locale);
             }
         });
         static::deleting(function (Model $model) {
@@ -63,6 +64,7 @@ trait Historable
         $data['locale'] = $locale;
         $data['icon_class'] = $this->iconClass($action);
         $data['historable_table'] = $this->getTable();
+        $data['historable_json'] = $this->owner ? null : json_encode($this);
         $data['action'] = $action;
         $history->create($data);
     }

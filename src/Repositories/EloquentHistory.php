@@ -46,6 +46,27 @@ class EloquentHistory extends RepositoriesAbstract implements HistoryInterface
         return $query->order()->take($number)->get();
     }
 
+
+    /**
+     * Get older versions.
+     *
+     * @param Model $model
+     * @param int $number number of versions
+     *
+     * @return Collection
+     */
+    public function versions($model, $number = 25)
+    {
+        $query = $this->make();
+        return $query
+                ->whereHistorableId($model->getKey())
+                ->whereHistorableType(get_class($model))
+                ->whereNotNull('historable_json')
+                ->take($number)
+                ->order()
+                ->get();
+    }
+
     /**
      * Clear history.
      *
