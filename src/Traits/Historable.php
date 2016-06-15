@@ -3,7 +3,6 @@
 namespace TypiCMS\Modules\History\Traits;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
 use TypiCMS\Modules\History\Models\History;
 
 trait Historable
@@ -13,10 +12,8 @@ trait Historable
      *
      * @return void
      */
-    public static function boot()
+    public static function bootHistorable()
     {
-        parent::boot();
-
         static::created(function (Model $model) {
             if (!$model->owner) { // don't write history for each translation
                 $model->writeHistory('created', $model->present()->title);
@@ -40,7 +37,7 @@ trait Historable
                 }
             }
         });
-        static::deleting(function (Model $model) {
+        static::deleted(function (Model $model) {
             $model->writeHistory('deleted', $model->present()->title);
         });
     }
@@ -59,7 +56,7 @@ trait Historable
         $history = app('TypiCMS\Modules\History\Repositories\HistoryInterface');
         $data['historable_id'] = $this->getKey();
         $data['historable_type'] = get_class($this);
-        $data['user_id'] = $this->getUserId();
+        $data['user_id'] = auth()->id();
         $data['title'] = $title;
         $data['locale'] = $locale;
         $data['icon_class'] = $this->iconClass($action);
@@ -102,18 +99,6 @@ trait Historable
             default:
                 return;
                 break;
-        }
-    }
-
-    /**
-     * Get current user id.
-     *
-     * @return int|null
-     */
-    private function getUserId()
-    {
-        if ($user = Auth::user()) {
-            return $user->id;
         }
     }
 

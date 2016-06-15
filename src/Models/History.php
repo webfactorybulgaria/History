@@ -49,7 +49,7 @@ class History extends Base
     }
 
     /**
-     * Get user name.
+     * Append user name.
      *
      * @return string\null
      */
@@ -61,17 +61,7 @@ class History extends Base
     }
 
     /**
-     * Get title.
-     *
-     * @return string
-     */
-    public function getTitleAttribute($value)
-    {
-        return $value;
-    }
-
-    /**
-     * Get title (overwrite Base model method).
+     * Append href.
      *
      * @return string|null
      */
