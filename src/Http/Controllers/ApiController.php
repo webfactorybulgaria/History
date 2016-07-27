@@ -20,9 +20,9 @@ class ApiController extends BaseApiController
      */
     public function index($builder = null)
     {
-        $models = $this->repository->latest(25, ['historable', 'user'], true);
-
-        return response()->json($models);
+        $builder = $this->repository->getModel()->with(['historable', 'user'])->latest();
+ 
+        return parent::index($builder);
     }
 
     /**

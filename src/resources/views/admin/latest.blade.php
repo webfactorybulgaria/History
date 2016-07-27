@@ -10,8 +10,7 @@
         </div>
 
         <div class="table-responsive">
-
-            <table st-table="displayedModels" st-safe-src="models" st-order st-filter class="table table-condensed table-main">
+            <table st-table="displayedModels" st-pipe="callServer" class="table table-condensed table-main">
                 <thead>
                     <tr>
                         <th class="created_at">Date</th>
