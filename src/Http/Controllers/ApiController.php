@@ -3,8 +3,8 @@
 namespace TypiCMS\Modules\History\Http\Controllers;
 
 use Illuminate\Support\Facades\Request;
-use TypiCMS\Modules\Core\Http\Controllers\BaseApiController;
-use TypiCMS\Modules\History\Repositories\HistoryInterface as Repository;
+use TypiCMS\Modules\Core\Custom\Http\Controllers\BaseApiController;
+use TypiCMS\Modules\History\Custom\Repositories\HistoryInterface as Repository;
 
 class ApiController extends BaseApiController
 {

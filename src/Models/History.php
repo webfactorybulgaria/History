@@ -3,14 +3,14 @@
 namespace TypiCMS\Modules\History\Models;
 
 use Laracasts\Presenter\PresentableTrait;
-use TypiCMS\Modules\Core\Models\Base;
+use TypiCMS\Modules\Core\Custom\Models\Base;
 
 class History extends Base
 {
     use PresentableTrait;
 
     protected $table = 'history';
-    protected $presenter = 'TypiCMS\Modules\History\Presenters\ModulePresenter';
+    protected $presenter = 'TypiCMS\Modules\History\Custom\Presenters\ModulePresenter';
 
     protected $fillable = [
         'historable_id',
@@ -45,7 +45,7 @@ class History extends Base
      */
     public function user()
     {
-        return $this->belongsTo('TypiCMS\Modules\Users\Models\User');
+        return $this->belongsTo('TypiCMS\Modules\Users\Custom\Models\User');
     }
 
     /**
