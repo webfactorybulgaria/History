@@ -2,7 +2,7 @@
 
 namespace TypiCMS\Modules\History\Repositories;
 
-use TypiCMS\Modules\Core\Custom\Repositories\RepositoryInterface;
+use TypiCMS\Modules\Core\Shells\Repositories\RepositoryInterface;
 
 interface HistoryInterface extends RepositoryInterface
 {

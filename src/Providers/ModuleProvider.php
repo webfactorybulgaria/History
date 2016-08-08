@@ -5,10 +5,10 @@ namespace TypiCMS\Modules\History\Providers;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
-use TypiCMS\Modules\Core\Custom\Services\Cache\LaravelCache;
-use TypiCMS\Modules\History\Custom\Models\History;
-use TypiCMS\Modules\History\Custom\Repositories\CacheDecorator;
-use TypiCMS\Modules\History\Custom\Repositories\EloquentHistory;
+use TypiCMS\Modules\Core\Shells\Services\Cache\LaravelCache;
+use TypiCMS\Modules\History\Shells\Models\History;
+use TypiCMS\Modules\History\Shells\Repositories\CacheDecorator;
+use TypiCMS\Modules\History\Shells\Repositories\EloquentHistory;
 
 class ModuleProvider extends ServiceProvider
 {
@@ -33,7 +33,7 @@ class ModuleProvider extends ServiceProvider
 
         AliasLoader::getInstance()->alias(
             'History',
-            'TypiCMS\Modules\History\Custom\Facades\Facade'
+            'TypiCMS\Modules\History\Shells\Facades\Facade'
         );
     }
 
@@ -44,9 +44,9 @@ class ModuleProvider extends ServiceProvider
         /*
          * Register route service provider
          */
-        $app->register('TypiCMS\Modules\History\Custom\Providers\RouteServiceProvider');
+        $app->register('TypiCMS\Modules\History\Shells\Providers\RouteServiceProvider');
 
-        $app->bind('TypiCMS\Modules\History\Custom\Repositories\HistoryInterface', function (Application $app) {
+        $app->bind('TypiCMS\Modules\History\Shells\Repositories\HistoryInterface', function (Application $app) {
             $repository = new EloquentHistory(new History());
             if (!config('typicms.cache')) {
                 return $repository;

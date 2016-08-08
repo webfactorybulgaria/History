@@ -1,6 +1,6 @@
 <?php
 
-namespace TypiCMS\Modules\History\Custom\Http\ViewComposers;
+namespace TypiCMS\Modules\History\Shells\Http\ViewComposers;
 
 use TypiCMS\Modules\History\Http\ViewComposers\VersioningComposer as Base;
 

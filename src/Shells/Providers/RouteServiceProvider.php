@@ -1,6 +1,6 @@
 <?php
 
-namespace TypiCMS\Modules\History\Custom\Providers;
+namespace TypiCMS\Modules\History\Shells\Providers;
 
 use TypiCMS\Modules\History\Providers\RouteServiceProvider as Base;
 

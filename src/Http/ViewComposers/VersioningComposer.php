@@ -3,7 +3,7 @@
 namespace TypiCMS\Modules\History\Http\ViewComposers;
 
 use Illuminate\Contracts\View\View;
-use TypiCMS\Modules\History\Custom\Repositories\HistoryInterface;
+use TypiCMS\Modules\History\Shells\Repositories\HistoryInterface;
 
 class VersioningComposer
 {

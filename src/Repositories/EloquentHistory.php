@@ -3,7 +3,7 @@
 namespace TypiCMS\Modules\History\Repositories;
 
 use Illuminate\Database\Eloquent\Model;
-use TypiCMS\Modules\Core\Custom\Repositories\RepositoriesAbstract;
+use TypiCMS\Modules\Core\Shells\Repositories\RepositoriesAbstract;
 
 class EloquentHistory extends RepositoriesAbstract implements HistoryInterface
 {

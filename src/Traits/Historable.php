@@ -3,7 +3,7 @@
 namespace TypiCMS\Modules\History\Traits;
 
 use Illuminate\Database\Eloquent\Model;
-use TypiCMS\Modules\History\Custom\Models\History;
+use TypiCMS\Modules\History\Shells\Models\History;
 
 trait Historable
 {
@@ -53,7 +53,7 @@ trait Historable
      */
     public function writeHistory($action, $title = null, $locale = null)
     {
-        $history = app('TypiCMS\Modules\History\Custom\Repositories\HistoryInterface');
+        $history = app('TypiCMS\Modules\History\Shells\Repositories\HistoryInterface');
         $data['historable_id'] = $this->getKey();
         $data['historable_type'] = get_class($this);
         $data['user_id'] = auth()->id();
@@ -107,6 +107,6 @@ trait Historable
      */
     public function history()
     {
-        return $this->morphMany('TypiCMS\Modules\History\Custom\Models\History', 'historable');
+        return $this->morphMany('TypiCMS\Modules\History\Shells\Models\History', 'historable');
     }
 }
