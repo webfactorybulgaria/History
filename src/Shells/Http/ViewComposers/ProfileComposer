@@ -2,9 +2,9 @@
 
 namespace App\Http\ViewComposers;
 
-use App\Http\ViewComposers\ProfileComposer as Base;
+use App\Http\ViewComposers\ProfileComposer as BaseClass;
 
-class ProfileComposer extends Base
+class ProfileComposer extends BaseClass
 {
 
 }

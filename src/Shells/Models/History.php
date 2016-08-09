@@ -2,9 +2,9 @@
 
 namespace TypiCMS\Modules\History\Shells\Models;
 
-use TypiCMS\Modules\History\Models\History as Base;
+use TypiCMS\Modules\History\Models\History as BaseClass;
 
-class History extends Base
+class History extends BaseClass
 {
 
 }

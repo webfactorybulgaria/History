@@ -2,9 +2,9 @@
 
 namespace TypiCMS\Modules\History\Shells\Repositories;
 
-use TypiCMS\Modules\History\Repositories\HistoryInterface as Base;
+use TypiCMS\Modules\History\Repositories\HistoryInterface as BaseInterface;
 
-interface HistoryInterface extends Base
+interface HistoryInterface extends BaseInterface
 {
 
 }

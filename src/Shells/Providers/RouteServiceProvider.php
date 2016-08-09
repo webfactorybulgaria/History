@@ -2,9 +2,9 @@
 
 namespace TypiCMS\Modules\History\Shells\Providers;
 
-use TypiCMS\Modules\History\Providers\RouteServiceProvider as Base;
+use TypiCMS\Modules\History\Providers\RouteServiceProvider as BaseClass;
 
-class RouteServiceProvider extends Base
+class RouteServiceProvider extends BaseClass
 {
 
 }

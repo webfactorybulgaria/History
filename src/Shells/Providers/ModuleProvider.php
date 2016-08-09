@@ -2,9 +2,9 @@
 
 namespace TypiCMS\Modules\History\Shells\Providers;
 
-use TypiCMS\Modules\History\Providers\ModuleProvider as Base;
+use TypiCMS\Modules\History\Providers\ModuleProvider as BaseClass;
 
-class ModuleProvider extends Base
+class ModuleProvider extends BaseClass
 {
 
 }

@@ -2,9 +2,9 @@
 
 namespace TypiCMS\Modules\History\Shells\Repositories;
 
-use TypiCMS\Modules\History\Repositories\CacheDecorator as Base;
+use TypiCMS\Modules\History\Repositories\CacheDecorator as BaseClass;
 
-class CacheDecorator extends Base implements HistoryInterface
+class CacheDecorator extends BaseClass implements HistoryInterface
 {
 
 }

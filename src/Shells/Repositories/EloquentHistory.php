@@ -2,9 +2,9 @@
 
 namespace TypiCMS\Modules\History\Shells\Repositories;
 
-use TypiCMS\Modules\History\Repositories\EloquentHistory as Base;
+use TypiCMS\Modules\History\Repositories\EloquentHistory as BaseClass;
 
-class EloquentHistory extends Base implements HistoryInterface
+class EloquentHistory extends BaseClass implements HistoryInterface
 {
 
 }
