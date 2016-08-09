@@ -1,0 +1,11 @@
+<?php
+
+namespace App\Http\ViewComposers;
+
+use App\Http\ViewComposers\ProfileComposer as BaseClass;
+
+class ProfileComposer extends BaseClass
+{
+
+}
+
