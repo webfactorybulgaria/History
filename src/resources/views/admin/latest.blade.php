@@ -21,7 +21,7 @@
                     </tr>
                 </thead>
 
-                <tbody>
+                <tbody ng-class="{'table-loading':isLoading}">
                     <tr ng-repeat="model in displayedModels">
                         <td>@{{ model.created_at | dateFromMySQL:'short' }}</td>
                         <td>
