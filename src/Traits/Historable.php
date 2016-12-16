@@ -7,6 +7,7 @@ use TypiCMS\Modules\History\Shells\Models\History;
 
 trait Historable
 {
+    public $skipHistoryWrite = false;
     /**
      * boot method.
      *
@@ -15,12 +16,14 @@ trait Historable
     public static function bootHistorable()
     {
         static::created(function (Model $model) {
+            if ($model->skipHistoryWrite) return;
             if (!$model->owner) { // don't write history for each translation
                 $model->writeHistory('created', $model->present()->title);
             }
         });
         static::updated(function (Model $model) {
             $action = 'updated';
+            if ($model->skipHistoryWrite) return;
             if (!$model->owner) { // if model has no owner, $model is not a translation
                 $model->writeHistory($action, $model->present()->title);
             }
