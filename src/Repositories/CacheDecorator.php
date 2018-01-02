@@ -36,7 +36,7 @@ class CacheDecorator extends CacheAbstractDecorator implements HistoryInterface
      */
     public function versions($model, $number = 25)
     {
-        $cacheKey = md5(config('app.locale').'versions'.serialize($model).$number);
+        $cacheKey = md5($this->cachePrefix().'versions'.serialize($model).$number);
 
         if ($this->cache->has($cacheKey)) {
             return $this->cache->get($cacheKey);
